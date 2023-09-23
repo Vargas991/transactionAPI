@@ -15,16 +15,4 @@ class CuentaController extends Controller
             'message' => $cuentas,
         ], 200);
     }
-
-    public function recibiendoId(Request $cuenta )
-    {
-
-        $id = $cuenta->id;
-
-      
-        return response()->json([
-            // 'message' => $cuentas,
-            'data' => $id
-        ], 200);
-    }
 }

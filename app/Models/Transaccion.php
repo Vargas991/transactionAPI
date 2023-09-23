@@ -9,8 +9,18 @@ class Transaccion extends Model
 {
     use HasFactory;
 
+    protected $table = 'transacciones';
+
+    protected $fillable = ['monto',
+                            'tipo',
+                            'balance',
+                            'cuenta_id'
+                        ];
+
     public function cuentas()
     {
-        return $this->hasMany(Cuenta::class);
+        return $this->hasMany(Cuenta::class, 'cuenta_id', 'id');
     }
+
+
 }

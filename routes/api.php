@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\CuentaController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\TransaccionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,5 +19,8 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
-Route::get('/test', [CuentaController::class, 'index']);
-Route::post('/test2', [CuentaController::class, 'recibiendoId']);
+Route::get('/cuentas', [CuentaController::class, 'index']);
+
+
+Route::get('/transacciones', [TransaccionController::class, 'index']);
+Route::post('/deposito', [TransaccionController::class, 'deposito']);
