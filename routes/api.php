@@ -24,3 +24,4 @@ Route::get('/cuentas', [CuentaController::class, 'index']);
 
 Route::get('/transacciones', [TransaccionController::class, 'index']);
 Route::post('/deposito', [TransaccionController::class, 'deposito']);
+Route::get('/transferencia', [TransaccionController::class, 'transferencia']);

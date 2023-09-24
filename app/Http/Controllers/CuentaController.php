@@ -12,7 +12,8 @@ class CuentaController extends Controller
         $cuentas = Cuenta::all();
 
         return response()->json([
-            'message' => $cuentas,
+            'ok' => true,
+            'cuentas' => $cuentas
         ], 200);
     }
 }
