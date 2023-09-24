@@ -19,9 +19,12 @@ use Illuminate\Support\Facades\Route;
 //     return $request->user();
 // });
 
+//Rutas cuentas
 Route::get('/cuentas', [CuentaController::class, 'index']);
 
 
+
+//Rutas Transacciones
 Route::get('/transacciones', [TransaccionController::class, 'index']);
 Route::post('/deposito', [TransaccionController::class, 'deposito']);
 Route::get('/transferencia', [TransaccionController::class, 'transferencia']);
