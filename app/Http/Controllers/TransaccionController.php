@@ -74,6 +74,7 @@ class TransaccionController extends Controller
 
         while($recibe===$envia){
             $recibe = mt_rand(1,5);
+            echo($recibe);
         }
 
         DB::beginTransaction();
