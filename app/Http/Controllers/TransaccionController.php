@@ -83,6 +83,19 @@ class TransaccionController extends Controller
             $clienteEnvia = Cuenta::where('id', '=', $envia)->lockForUpdate()->first();
             $clienteRecibe = Cuenta::where('id', '=', $recibe)->lockForUpdate()->first();
 
+            $transaccion = Transaccion::create([
+                'tipo' => 'retiro',
+                'monto' => $monto*-1,
+                'balance' => $clienteEnvia->saldo - $monto,
+                'cuenta_id' => $clienteEnvia->id
+            ]);
+            
+            $transaccion = Transaccion::create([
+                'tipo' => 'deposito',
+                'monto' => $monto ,
+                'balance' => $clienteRecibe->saldo + $monto,
+                'cuenta_id' => $clienteRecibe->id
+            ]);
 
             $clienteEnvia->update(
                 [
@@ -92,9 +105,10 @@ class TransaccionController extends Controller
 
             $clienteRecibe->update(
                 [
-                    'saldo' => $clienteRecibe->saldo - $monto
+                    'saldo' => $clienteRecibe->saldo + $monto
                 ]
             );
+
 
             // Cuando haya terminado, Laravel liberará el bloqueo automáticamente al finalizar la transacción.
             DB::commit();
@@ -111,4 +125,5 @@ class TransaccionController extends Controller
         ], 200);
 
     }
+
 }
